@@ -19,6 +19,24 @@ an pcm resample library for Android based on [hutm/JSSRC](https://github.com/hut
               PcmResample.resample(srcFileConfig, targetFileConfig, reSampleListener);
 ```
 
+## Gradle
+[![](https://jitpack.io/v/ideastudios/IdealRecorder.svg)](https://jitpack.io/#ideastudios/IdealRecorder)
+1. Add it in your root build.gradle at the end of repositories:
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+2. Add the dependency
+```
+	dependencies {
+	        compile 'com.github.ideastudios:IdealRecorder:1.0.3'
+	}
+
+```
 
 ## 感谢
 [hutm/JSSRC](https://github.com/hutm/JSSRC)
