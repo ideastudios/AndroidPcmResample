@@ -1,5 +1,24 @@
 # AndroidPcmResample
-an pcm resample library for Android
+an pcm resample library for Android based on [hutm/JSSRC](https://github.com/hutm/JSSRC)
 
-安卓上pcm数据（wav文件舍弃前44个字节即可）重新采样的库
+安卓上pcm数据重新采样的库
+如果是wav文件舍弃前44个字节之后 就是pcm数据
 
+
+## 使用
+```java
+
+              File file = new File(getExternalFilesDir(null), "50waystosaygoodbye.pcm");
+              //重新采样后生成的文件路径
+              File targetWaveFile = new File(getExternalFilesDir(null), "50waystosaygoodbye_8.pcm");
+              //源文件的采样率、通道数、采样位数
+              PcmResample.AudioFileConfig srcFileConfig = new PcmResample.AudioFileConfig(file.getAbsolutePath(), 44100, AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT);
+              //生成文件的采样率、通道数(必须和源文件一样)、采样位数（必须和源文件一样）
+              PcmResample.AudioFileConfig targetFileConfig = new PcmResample.AudioFileConfig(targetWaveFile.getAbsolutePath(), 8000, AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT);
+              //开始重新采样 采样回调在工作线程 非UI线程
+              PcmResample.resample(srcFileConfig, targetFileConfig, reSampleListener);
+```
+
+
+## 感谢
+[hutm/JSSRC](https://github.com/hutm/JSSRC)
